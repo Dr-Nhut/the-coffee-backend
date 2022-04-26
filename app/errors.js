@@ -10,9 +10,9 @@ class BadRequestError extends Error {
 
 class ErrorHandler {
     constructor() {
-        this.handleError = (error, respomseStream = null) => {
-            if(respomseStream) {
-                respomseStream.status(error.statusCode || 500).json({
+        this.handleError = (error, responseStream = null) => {
+            if(responseStream) {
+                responseStream.status(error.statusCode || 500).json({
                     message: error.message || "Internal Server Error",
                 });
             } else {

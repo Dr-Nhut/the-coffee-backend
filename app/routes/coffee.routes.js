@@ -1,22 +1,20 @@
 const express = require("express");
-const drinks = require("../controllers/coffee.controller");
+const coffees = require("../controllers/coffee.controller");
 
 module.exports = (app) => {
     const router = express.Router();
 
-    router.get("/", drinks.findAll);
+    router.get("/", coffees.findAll);
 
-    router.post("/", drinks.create);
+    router.post("/", coffees.create);
 
-    router.delete("/", drinks.deleteAll);
+    router.delete("/", coffees.deleteAll);
 
-    router.get("/cart", drinks.addToCart);
+    router.get("/:id", coffees.findOne);
 
-    router.get("/:id", drinks.findOne);
+    router.put("/:id", coffees.update);
 
-    router.put("/:id", drinks.update);
+    router.delete("/:id", coffees.delete);
 
-    router.delete("/:id", drinks.delete);
-
-    app.use("/api/drinks", router);
+    app.use("/api/coffees", router);
 };
